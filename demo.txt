@@ -1,0 +1,163 @@
+//蒲公英
+repeat 24[fd 40 lt 45 fd 15 bk 15 rt 90 fd 15 bk 15  lt 45 bk 40 rt 360/24] bk 200
+重复 24[前进 40 左转 45 前进 15 后退 15 右转 90 前进 15 后退 15  左转 45 后退 40 右转 360/24] 后退 200
+
+
+repeat 9 [ repeat 5 [fd 50 rt 360/5]rt 360/9]
+
+//气球
+lt 10 repeat 2[fd 70 rt 90 repeat 360[fd 5*pi/180 lt 1]home rt 10] 
+
+//五角星
+rt 18 repeat 5 [ fd 100 rt 180-36 ]
+
+//花纹
+repeat 15 [ lt 360/15 fd 80 repeat 24 [ fd 20 lt 45 fd 10 bk 10 rt 90 fd 10 bk 10 lt 45 bk 20 rt 360/24 ] bk 80]
+
+repeat 18[repeat 2[fd 50 rt 20 fd 50 rt 160]rt 20]
+
+rp 45 [ fd 300 rt 128 ]
+
+rp 18[rp 4[fd 60 rt 90]lt 20]
+
+repeat 8[fd 30 lt 45 repeat 4 [fd 25 rt 90] rt 45 fd 10 lt 45 repeat 4 [fd 50 rt 90] rt 45 bk 40 rt 360/8]
+
+rp 6[lt 45 rp 4[rp 9[fd 5 rt 10] rp 9[fd 5 lt 10] rt 90]rt 105]
+
+repeat 8[fd 80 rt 45 fd 20 repeat 4[fd 50 rt 90]]
+
+repeat 36[fd 3.14*10/18 rt 360/36]
+
+
+to lwjx :b ht rt 18 repeat 5[fd :b rt 144 fd :b rt 54 fd:b*1.9 bk :b*1.9 lt 126] end
+
+to zfx :a repeat 4[fd :a rt 90] end zfx 200
+
+//////重构后检测专用
+//椅子 基本绘画指令检测
+fd 100 rt 90 fd 100 lt 90 fd 100 bk 200
+
+//虚线 检测：fd pu pd rp
+fd 50 pu fd 50 pd fd 50 pu fd 50 pd fd 50 pu fd 50 pd
+rp 100[fd 50 pu fd 50 pd]
+
+//clean检测
+fd 100 clean fd 100 bk 200
+
+//home 测试
+rt 38 fd 100 home lt 38 fd 100
+
+//setpc 测试
+fd 50 setpc 1 fd 50 setpc 2 fd 50 setpc 3 fd 50
+
+//RANDOM 测试
+setw random 0 15 width
+setbg [random 0 100 random 0 100 random 0 100]
+
+//多线程测试
+ask 1 [rt 60] ask 2 [rt 120] ask 3 [rt 180] ask 4 [rt 240] ask 5 [rt 300] 
+tell [0 1 2 3 4 5]
+fd 100
+
+
+失败记录 
+
+
+
+
+
+
+
+
+
+
+--目前有bug
+repeat 360 [repeat repcount [repeat repcount [fd repcount lt 15] home] lt 1]
+repeat 10000 [fd 3 * (-1 + random 2) rt 90 * random 4]
+
+
+
+--递归
+to spiral :size
+   if  :size > 30 [stop] ; an exit condition
+   fd :size rt 15        ; many lines of action
+   spiral :size *1.02    ; the tailend recursive call
+end
+
+to t3
+bk 70 fd 70
+repeat 2[repeat 90[fd 50*pi/180 rt 1] rt 90]
+repeat 2[repeat 90[fd 50*pi/180 lt 1] lt 90]
+pu fd 50 pd
+stampoval 10 10
+end
+
+to t1
+repeat 3[fd 50 rt 120]
+pu fd 25 rt 90 fd 45 rt 90 fd 50 rt 180 pd
+repeat 3[fd 100 rt 120]
+pu fd 50 rt 90 fd 55 pd
+stampoval 5 5 ht
+end
+
+
+
+to tree :size
+   if :size < 5 [forward :size back :size stop]
+   forward :size/3
+   left 30 tree :size*2/3 right 30
+   forward :size/6
+   right 25 tree :size/2 left 25
+   forward :size/3
+   right 25 tree :size/2 left 25
+   forward :size/6
+   back :size
+end
+clearscreen
+tree 150
+
+
+--递归 树
+clearscreen window hideturtle
+repeat 144 [
+  setlabelheight repcount
+  penup
+  fd repcount * repcount / 30
+  label "Logo
+  bk repcount * repcount / 30
+  pendown
+  rt 10
+  wait 5
+]
+showturtle
+
+--递归 树
+to fern :size :sign
+  if :size < 1 [ stop ]
+  fd :size
+  rt 70 * :sign fern :size * 0.5 :sign * -1 lt 70 * :sign
+  fd :size
+  lt 70 * :sign fern :size * 0.5 :sign rt 70 * :sign
+  rt 7 * :sign fern :size - 1 :sign lt 7 * :sign
+  bk :size * 2
+end
+window clearscreen pu bk 150 pd
+fern 25 1
+
+
+to square :length
+  repeat 4 [ fd :length rt 90 ]
+end
+to randomcolor
+  setcolor pick [ red orange yellow green blue violet ]
+end
+clearscreen
+repeat 36 [ randomcolor square random 200 rt 10 ]
+
+
+http://www.mathcats.com/gallery/15wordcontest.html
+
+http://www.calormen.com/jslogo/
+
+https://mc.zzidc.com/hyzx/caiwu/showTransPager.action
+vmwed@453247629

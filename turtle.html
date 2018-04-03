@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Turtle Maker</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        body{width:100%;}
+        #main{
+            width:300px;
+            margin: 100px auto;
+        }
+        #main i {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            background-color: black;
+            float: left;
+        }
+        #main i:hover{
+            background-color: gray;cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+
+    </div>
+    <script>
+        (function () {
+            let m = document.getElementById("main");
+            let htmlString = [];
+            for (let i = 0; i < 4020; i++) {
+                htmlString.push(`<i></i>`);
+            }
+            m.innerHTML = htmlString.join("");
+
+            let is = document.getElementsByTagName("i");
+            [...is].forEach((i)=>{
+                i.onclick=function(){
+                    let curColor = i.style.backgroundColor;
+                    if(curColor == "black" || curColor == ""){
+                        i.style.backgroundColor = "white";
+                    }else{
+                        i.style.backgroundColor = "black";
+                    }
+                }
+            })
+
+        })();
+
+    </script>
+
+</body>
+
+</html>

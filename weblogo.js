@@ -768,7 +768,7 @@ class GameHelper{
         this.ShowResult(`Welcome to Web Turtle [ver ${this.version.join(".")}]`);
         this.ShowResult("Copyright © VMWed.COM 2017");
         this.ShowResult("Try 'help' or '?' for more information.");
-        this.ShowResult("说明（临时）：https://github.com/C0618C/jGE/blob/master/WebTurtle/README.md")
+        this.ShowResult("说明（临时）：https://github.com/C0618C/jGE-WebTurtle/blob/master/README.md")
         this.ShowResult("　");
         let ip_bar = document.getElementById("cmd_input");
         ip_bar.removeAttribute("disabled");
@@ -898,7 +898,7 @@ class GameHelper{
     l10n(){
         let curLang = navigator.language;
         if(curLang.includes("en")) return;        //curLang = "ru";     //测试的俄语
-        GetURL({url:`i18n/${curLang}.js`,type:"script"})
+        this.ge.ResourceManager.Ajax({url:`i18n/${curLang}.js`,type:"script"})
         .then((rsl)=>{
             if(typeof web_logo_i18n != "undefined"){//本地化处理
                 this.pclogo.i18n(web_logo_i18n.cmd);
