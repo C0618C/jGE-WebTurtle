@@ -3,7 +3,7 @@
     
 #你还记得当年的小海龟么# 或许对很多人来说，成为程序员只是偶然；但我，在多年前认识小海龟的那个下午，就已经注定了。感谢Logo语言，让我在程序员的路上越走越远。
 
-部署地址：<http://www.vmwed.com/sb/webturtle/>  
+部署地址：<http://www.vmwed.com/webturtle/>  
 
 ## 关于Logo流派、Web Turtle所用语法及说明
 Logo的发展史及流派可看维基百科[Logo(programming_language)](https://en.wikipedia.org/wiki/Logo_%28programming_language%29)  
