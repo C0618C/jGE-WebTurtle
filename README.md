@@ -1,4 +1,6 @@
 # Web Turtle
+[![MIT](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
+[![jGE](https://img.shields.io/badge/developing%20with-jGE-2077ff.svg)](http://www.vmwed.com/)
 > Web Turtle 是基于:dragon:jGE的一个小程序，关于:dragon:jGE的内容，请到:dragon:jGE页面查看。  
     
 #你还记得当年的小海龟么# 或许对很多人来说，成为程序员只是偶然；但我，在多年前认识小海龟的那个下午，就已经注定了。感谢Logo语言，让我在程序员的路上越走越远。
